@@ -17,8 +17,26 @@ public class Client
             ObjectOutputStream objos = new ObjectOutputStream(dout);
             ObjectInputStream objis = new ObjectInputStream(dis);
 
-            String  str = (String)objis.readUTF(); 
+            String str = (String)objis.readUTF(); 
             System.out.println(str);
+
+            String[] responseArray = str.split(" ");
+
+            String requestID = responseArray[0];
+            String[] stringArrayHolder = responseArray[1].split(",");
+            int[] integerArray = new int[stringArrayHolder.length];
+            for(int n = 0; n < stringArrayHolder.length; n++) {
+                integerArray[n] = Integer.parseInt(stringArrayHolder[n]);
+            }
+
+            System.out.println(integerArray[1]);
+
+            System.out.println(responseArray[1]);
+
+
+
+
+
 
             objis.close();
             dout.flush();  
