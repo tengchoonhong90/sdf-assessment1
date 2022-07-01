@@ -21,7 +21,6 @@ public class Client
             System.out.println(str);
 
             String[] responseArray = str.split(" ");
-
             String requestID = responseArray[0];
             String[] stringArrayHolder = responseArray[1].split(",");
             int[] integerArray = new int[stringArrayHolder.length];
@@ -29,7 +28,14 @@ public class Client
                 integerArray[n] = Integer.parseInt(stringArrayHolder[n]);
             }
 
-            System.out.println(integerArray[1]);
+            int sumOfInteger = 0;
+            for (int i=0; i<integerArray.length; i++) {
+                sumOfInteger += integerArray[i];
+            }
+
+            double average = sumOfInteger / 2;
+
+            System.out.println(average);
 
             System.out.println(responseArray[1]);
 
