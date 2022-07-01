@@ -42,25 +42,25 @@ public class App
             templateArray.get(2).set(0, ("Dear " + dataList.get(0)));
             templateArray.get(4).set(0, ("Thank you for staying with us over these " + dataList.get(3) + " years."));
         
-            System.out.println(dataList.get(0));
-
             String writePath = templatePath.replace("thankyou.txt", "//Users//tengchoonhong//Desktop");
 
-            System.out.println(writePath);
             String name = dataList.get(0).toString();
             String fileName = name + ".txt";
             FileWriter file = new FileWriter(new File(writePath, fileName));
             BufferedWriter bf = new BufferedWriter(file);
+            
 
             for(int j=0; j<templateArray.size(); j++) {
                 String placeholder = templateArray.get(j).toString();
+                placeholder = placeholder.replace("[", "")
+                                            .replace("]", "\n")
+                                            .replace("\\n", "\n");
 
                 System.out.println(placeholder);
-                System.out.println(templateArray.get(j).toString());
-                // bf.write(templateArray.get(j).toString());
+                bf.write(placeholder);
             }
 
-            // bf.close();
+            bf.close();
         }
       
     }
